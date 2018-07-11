@@ -1,0 +1,53 @@
+/* CSS Document */
+.fontArial, .txtAreaDefault, .bdropdownNoWidth, .bdropdownDefaultNoHeight, .fileField, .bdropdown150 { font-family:Arial, Helvetica, sans-serif; }
+.fontVerdana, .txtfld, .bTxtfldLogin, .bgBtnLogin, .txtFldDefault, .bgBtnDefault { font-family:Verdana, Arial, Helvetica, sans-serif;}
+.fontTahoma, . txtTlemenu, .txtDefault, .txtDefault_b, .txtfldPaging  { font-family:Tahoma, "Arial Narrow", Verdana; }
+
+/* color */
+
+.linkMainNav, .bgBtnLogin  { color:#FFFFFF; }
+.txtWelcome, .txtWelcome_b, .txtModuleName { color:#006699; }
+.linkLeftPanel, .linkCalDays { color:#0066CC; }
+.linkLeftSubPanel { color:#006699; }
+.linkLeftSubPanel2 { color:#5E82AA; }
+.txtContentTitle { color:#91B5D1; }
+.txtTlePage { color:#D65C0C; }
+.txtDefault, .txtDefault_b, .bTxtfldLogin, .txtFldDefault, .txtAreaDefault, .bdropdownNoWidth, .bdropdownDefaultNoHeight, .fileField, .txtfldPaging { color:#333333; }
+.txtTlemenu  { color:#ffffff; }
+.txtTlemenu2 { color:#46673D; }
+.txtCTotalDate { color:#0066CC; }
+.txtCTotalTblTle, .txtTblTle { color:#8D6050; }
+.txtLogin { color:#FFFFFF; }
+.txtFFFFFF_11 { color:#FFFFFF; }
+.txtModTitle { color:#006699; }
+.txtSiteMap_b, .txtSiteMap {color:#666666; }
+.txtTleTbl01  { color:#ffffff; }
+.bgBtnDefault, .txtDefaultCap{ color:#333333; }
+
+/* size */
+.txt10, .bgBtnLogin, .txtSiteMap_b, .txtSiteMap, .bgBtnDefault, .txtTlemenu, .txtTlemenu2, .txtDefault, .txtDefault_b, .txtfldPaging, .linkMainNav, .txtWelcome, .txtWelcome_b, .linkLeftPanel, .linkLeftSubPanel, .linkCalDays, .txtfld, .txtCTotalDate, .txtLogin, .bTxtfldLogin, .txtFFFFFF_11, .linkLeftSubPanel2, .bdropdown150, .txtFldDefault, .txtTleTbl01, .txtTblTle, .txtAreaDefault, .bdropdownNoWidth, .bdropdownDefaultNoHeight, .txtDefaultCap  { font-size:10px; }
+.txt11 { font-size:11px; }
+.txt12, .txtContentTitle, .txtTlePage, .txtCTotalTblTle { font-size:12px; }
+.txt14, .txtModuleName, .txtModTitle { font-size:14px; }
+.txt35 { font-size:35px; }
+
+/* bold */
+.txtbold, .linkMainNav, .txtWelcome_b, .txtModuleName, .linkLeftPanel, .linkLeftSubPanel, .txtContentTitle, .txtTlePage, .txtCTotalTblTle, .txtTlemenu2, .txtModTitle, .txtSiteMap_b, .txtTblTle, .bgBtnDefault, .txtDefault_b, .txtfldPaging { font-weight:bold; }
+
+.italize, .txtCTotalDate { font-style:italic; }
+
+a.linkMainNav, .linkLeftPanel, .linkLeftSubPanel:active { text-decoration:none;}
+a.linkMainNav, .linkLeftPanel, .linkLeftSubPanel:link { text-decoration:none;}
+a.linkMainNav, .linkLeftPanel, .linkLeftSubPanel:hover { text-decoration: none;}
+a.linkMainNav, .linkLeftPanel, .linkLeftSubPanel:visited {text-decoration:none;}
+a.linkMainNav, .linkLeftPanel, .linkLeftSubPanel:visited:hover { text-decoration: none; }
+
+a.linkCalDays, .linkLeftSubPanel2:active { text-decoration:none;}
+a.linkCalDays, .linkLeftSubPanel2:link { text-decoration:none;}
+a.linkCalDays, .linkLeftSubPanel2:hover { text-decoration: underline;}
+a.linkCalDays, .linkLeftSubPanel2:visited {text-decoration:none;}
+a.linkCalDays, .linkLeftSubPanel2:visited:hover { text-decoration: underline; }
+
+.txtDefaultCap:first-letter{float: left;font-weight: normal;}
+
+

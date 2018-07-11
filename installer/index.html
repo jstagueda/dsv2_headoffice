@@ -1,0 +1,114 @@
+<!-- 
+	Author by: Gino C. Leabres 
+	explanation: Setup main page for setup options of DSS system, such as dealer, product, inventory and sales invoice.
+-->
+<html>
+<head>
+<link type="image/x-icon" href="../images/favicon.ico" rel="shortcut icon" />
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.8.5.custom.css">
+<link rel="stylesheet" type="text/css" href="css/install.css">
+<script language="javascript" src="js/jquery-1.8.3.min.js"  type="text/javascript"></script>
+<script language="javascript" src="js/jquery-ui-1.10.0.custom.min.js"  type="text/javascript"></script>
+<script language="javascript" src="js/install.js"  type="text/javascript"></script>
+</head>
+<title>Tupperware Brands - DSv2 Head Office System Setup</title>
+<body>
+<form method="post" action="">
+	<div id = 'main-div'>
+		<div id="header"><h2>Tupperware Brands - DSv2 Head Office System Setup</h2></div>
+		<div class="main-content">
+			<div class="for-setup">
+				<div style="margin:2%; font-family: Coure.gr New;height: 300px;">
+				<table width="90%"  height="20%" border = "0" cellspacing="0" cellpadding="0" align="left" id ="config_setup">
+					<tr align = "right">
+						<td>Database Server:</td>
+						<td><input type ="text" id = "Database-Server" autocomplete="off" placeholder ="e.g localhost"></td>
+					</tr>
+					<tr  align = "right">
+						<td>Database Name:</td>
+						<td><input type ="text" id='Database-Name' autocomplete="off" placeholder =" e.g ems_tpi_test_branch"></td>
+					</tr>
+					<tr  align = "right">
+						<td>SQL User Name:</td>
+						<td><input type ="text" id = "Username" autocomplete="off" placeholder =" e.g root"></td>
+					</tr>
+					<tr  align = "right">
+						<td>SQL Password:</td>
+						<td><input type ="password" id='Password' autocomplete="off" placeholder="password" value =""></td>
+					</tr>
+					<!-- tr  align = "right">
+						<td>Data Migration File Path:</td>
+						<td><input type ="text" id = "FilePath" autocomplete="off" placeholder= " e.g TPI-Data/data/"></td>
+					</tr-->
+					<!-- tr  align = "right">
+						<td>HO Url Sync:</td>
+						<td><input type ="text" id = "HOSync" autocomplete="off" placeholder ="e.g http://localhost/dss_ho"></td>
+					</tr -->
+					<!-- tr  align = "right">
+						<td>Branch Url Sync:</td>
+						<td><input type ="text" id = "BranchUrl" autocomplete="off" placeholder ="e.g http://localhost/dss_branch"></td>
+					</tr -->
+					<tr  align = "left"><td colspan='2'>&nbsp;</td></tr>
+					<tr  align = "right">
+						<td>&nbsp;</td>
+						<td><input type ="submit" class = "btn" id = "first_setup" onclick="return submit_setup(1);" value ="Start Setup"></td>
+					</tr>
+				</table>
+				<table width="80%"  height="20%" border = "0" cellspacing="0" cellpadding="0" align="left" id ="setup_branch_parameter" style="display:none;">
+					<tr align = "right">
+						<td>Branch Name:</td>
+						<td><input type = "text" autocomplete="off" placeholder = "Branch Name" value = "" id = "BranchName" keypress = "gino();"/><input type = "hidden" value = "" id = "BranchID" /></td>
+						</tr>
+					<tr  align = "right">
+						<td>TIN :</td>
+						<td><input type = "text" autocomplete="off" placeholder = "TIN" value = "" id = "TIN" /></td>
+					</tr>
+					<tr  align = "right">
+						<td>PermitNo :</td>
+						<td><input type = "text" autocomplete="off" placeholder = "Permit number" value = "" id = "PermitNo" /></td>
+					</tr>
+					<tr  align = "right">
+						<td>ServerSN :</td>
+						<td><input type = "text" autocomplete="off" placeholder = "Server SN" value = "" id = "ServerSN" /></td>
+					</tr>
+					<tr  align = "right">
+						<td>Welcome Note Line 1 :</td>
+						<td><input type = "text" autocomplete="off" placeholder = "TUPPERWARE BRANDS" value = "" id = "WelcomeNoteLine1" /></td>
+					</tr>
+					<tr  align = "right">
+						<td>Welcome Note Line 2 :</td>
+						<td><input type = "text" autocomplete="off" placeholder = "20/20 Vission" value = "" id = "WelcomeNoteLine2" /></td>
+					</tr>
+					<tr  align = "right">
+						<td>Welcome Note Line 2 :</td>
+						<td><input type = "text" autocomplete="off" placeholder = "DREAM IT. DO IT." value = "" id = "WelcomeNoteLine3" /></td>
+					</tr>
+					<tr  align = "left">
+						<td colspan='2'>&nbsp;</td>
+					</tr>
+					<tr  align = "left">
+						<td>&nbsp;</td>
+						<td><input type ="submit" class = "btn" id = "second_setup" onclick="return submit_setup(2);" value ="Start Setup"></td>
+					</tr>
+				</table>
+					<div style="text-align:center;display:none;" id = "indicator"><img src='img/ajax-progress-bar.gif'><br /> loading. please wait</div>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div id="logs" class='status-content-parameter'>
+				 <p>Process logs here...<br /></p>
+			</div>
+			<div style="clear:both; background:white;"></div>
+		</div>
+		<div style="clear:both;"></div>
+	<br />
+	</div>
+</form>
+<div id="dialog-message" style='display:none;'>
+    <p></p>
+</div>
+<div id="dialog-message-with-button" style='display:none;'>
+    <p></p>
+</div>
+</body>
+</html>
