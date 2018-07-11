@@ -1,0 +1,20 @@
+ul li.folder { list-style-image: url('../images/bullet02a.gif') no-repeat; }
+ul ul li.folder  { list-style-image: url('../images/bullet02a.gif') no-repeat; }
+ul ul ul li.folder  { list-style-image: url('../images/bullet02a.gif') no-repeat; }
+ul ul ul ul li.folder  { list-style-image: url('../images/bullet02a.gif') no-repeat; }
+ul ul ul ul ul li {
+	background-repeat: no-repeat;
+	color: #000;
+	list-style-image: url(../images/folderviolet.gif);
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height:normal;
+}
+ul ul ul ul ul ul li {
+	background-repeat: no-repeat;
+	color: #000;
+	list-style-image: url(../images/flag.gif);
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height:normal;
+}

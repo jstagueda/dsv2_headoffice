@@ -1,0 +1,334 @@
+/* 
+  @package TPI Direct Selling System CSS
+  @author John Paul Pineda
+  @email paulpineda19@yahoo.com
+  @copyright 2013 John Paul Pineda
+  @version 1.0 July 31, 2013
+  
+  @description TPI Direct Selling System CSS.  
+*/
+
+/**
+  * jQuery Tools' Tooltip CSS starts here.    	  	 
+  */
+/**
+  * Tooltip Styling    	  	 
+  */  
+
+.tooltip {
+
+  background:#EC008C;
+  border:2px outset white;
+  color:white;
+  display:none;        
+  font-size:11px;
+  font-weight:bold;  
+  padding:12px 12px;
+  
+  position:absolute;
+  left:72%;
+  top:108px;
+  
+  width:252px;
+  height:auto;
+}
+
+.tooltip li {  
+  
+  float:left;    
+  display:block;
+  clear:both;    
+}
+
+.tooltip li.tpi-module {    
+    
+  
+  clear:both;    
+}
+ 
+.tooltip a {
+
+  color:#ad4;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.tooltip ul {
+ 
+  list-style-type:none;
+  padding:0px; 
+}
+
+#tooltip_about {
+  
+  text-align:center;
+  
+  left:80%;
+  
+  width:168px;      
+}
+
+#branch_information_header {
+  
+  background:white;
+  border:1px solid gray;
+  color:#EC008C;    
+  margin-bottom:10px;
+  padding-top:7px;
+      
+  width:174px;
+  height:19px;
+}
+
+.branchheader {
+
+  border-radius: 10px 10px 0 0;
+  color: white;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 22px;
+  letter-spacing: 10px;                          
+  text-align: center;
+  text-shadow: -4px -4px maroon;
+}
+.branchheader h1{margin: 0; padding: 0;}
+.branchparam {
+  
+  color:white;
+  font-size: 18px;
+  text-shadow: -4px -4px maroon;
+}
+
+.labelparam { font-size:12px; font-weight: bold; margin-bottom:3px; text-decoration:underline; }
+.fieldparam { font-size:12px; margin-bottom:12px; text-shadow: -1px -1px maroon; } 
+
+/**
+  * jQuery Tools' Tooltip CSS ends here.    	  	 
+  */
+  
+
+
+/**
+  * Pagination's CSS starts here.    	  	 
+  */
+.pageOn {
+
+	background:#CCC;
+	border:1px solid #EC008C;
+	margin:2px 4px;
+	padding:2px 4px;
+	color:#EC008C;
+}
+
+.pageOff {
+
+	background:#EEE;
+	border:1px solid #EC008C;
+	margin:2px 4px;
+	padding:2px 4px;
+	color:#EC008C;
+}
+
+.pageOff:hover {
+
+	background:#DDD;
+	cursor:pointer;
+}
+
+.pageOff a {
+
+	color:#EC008C;
+	text-decoration:none;
+}
+
+.paginationSelect {
+
+	background:#EEE;
+}
+
+.paginationErrors {
+
+	clear:both;
+	text-align:left;
+	border:2px dashed #EC008C;
+	color:#EC008C;
+	background:#EC008C;
+	padding:10px;
+	width:70%;
+	margin:auto;
+	margin-top:40px;
+	margin-bottom:40px;
+}
+/**
+  * Pagination's CSS ends here.    	  	 
+  */    
+
+.tpi-blinking-link { text-decoration:blink; }
+
+.tpi-link-button {
+  
+  color:gray;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.tpi-active-link-button {
+
+ color:black;
+ font-weight:bold; 
+}
+
+.summarized-backorder-report { display:none; }
+
+#view_applicable_promos, #view_applicable_incentives {
+  
+  color:#FF00A6;
+  display:none;
+  font-size:12px;
+  margin-top:12px;
+}
+
+#tpi_dss_applicable_promos_overlay, #tpi_dss_applicable_incentives_overlay, #tpi_dss_sales_cycle_transactions_overlay, #tpi_dss_sales_cycle_detailed_transactions_overlay {
+ 
+  display:none;
+  background:#777777;  
+  
+  opacity:0.78;
+  
+  position:fixed;
+  left:0px;
+  top:0px;
+  z-index:1121;
+  
+  width:100%;     
+}
+
+#tpi_dss_sales_cycle_detailed_transactions_overlay { background:none; }
+
+#tpi_dss_applicable_promos, #tpi_dss_applicable_incentives, #tpi_dss_sales_cycle_transactions, #tpi_dss_sales_cycle_detailed_transactions {
+    
+  margin-left:-322px;
+  overflow:auto;
+  position:absolute;
+  left:50%;
+  top:auto;
+  
+  height:54%;
+}
+
+#tpi_dss_applicable_incentives {
+  
+  top:2%;
+  width:50%; 
+}
+
+#tpi_dss_applicable_promos table, #tpi_dss_applicable_incentives table, #tpi_dss_sales_cycle_transactions table, #tpi_dss_sales_cycle_detailed_transactions table {
+  
+  background:white;
+}
+
+#tpi_dss_applicable_promos table tr td, #tpi_dss_applicable_incentives table tr td, #tpi_dss_sales_cycle_transactions table tr td, #tpi_dss_sales_cycle_detailed_transactions table tr td {
+  
+  color:#EC008C;
+  font-size:11px;
+}
+
+#tpi_dss_applicable_promos table tr td a.txtnavgreenlink, #tpi_dss_applicable_incentives table tr td a.txtnavgreenlink {
+  
+  color:#EC008C;  
+}
+
+.close-applicable-promos-window, .close-applicable-incentives-window {
+  
+  cursor:pointer;
+  font-size:12px;
+}
+
+.close-applicable-incentives-window { font-size:11px; }
+
+#applicable_incentives_header {    
+  
+  background:white;
+  border:2px ridge gray;
+  color:#EC008C;
+  text-align:center;
+  
+  width:50%;
+  
+  position:absolute;
+  left:26%;  
+  top:0%;  
+  z-index:2;      
+}
+
+.single-line-entitlement { cursor:pointer; }
+
+.single-line-entitlement:hover {
+ 
+  color:#697A43;
+  font-size:12px; 
+}
+
+#tpi_dss_applied_promos, #tpi_dss_applied_incentives { display:none; }
+
+.applied-promo, .applied-incentive, .applied-multi-line-promos-header, .applied-overlay-promos-header, .applied-incentives-header {
+  
+  border:1px solid #FF00A6;
+  border-top:0px;
+  cursor:pointer;
+  
+  width:22%;
+}
+
+.applied-multi-line-promos-header, .applied-overlay-promos-header, .applied-incentives-header { border-top:1px solid #FF00A6; }
+
+.applied-promo-entitlements, .applied-incentive-entitlements { display:none; }
+
+.clicked-promo-code, .clicked-incentive-code {
+  
+  background:#CBCDB8;
+  font-weight:bold; 
+}
+
+#tpi_dss_sales_cycle_transactions, #tpi_dss_sales_cycle_detailed_transactions {
+ 
+  background:#FFF7FE;    
+  left:35%; 
+}
+
+#tpi_dss_sales_cycle_detailed_transactions {
+  
+  border:3px ridge gray;
+  margin-left:auto;
+  margin-top:2%;  
+  overflow: visible;
+  
+  width:auto;
+  height:auto;
+}
+
+#tpi_dss_sales_cycle_detailed_transactions.detailed-customer-sales-cycle-transactions {
+  
+  left:auto;
+  margin-left:6%;
+  margin-top:0%;
+  overflow:auto;
+  
+  height:88%;  
+}
+
+#tpi_dss_sales_cycle_detailed_transactions form { color:#EC008C; }
+
+#tpi_dss_sales_cycle_transactions table tr td, #tpi_dss_sales_cycle_detailed_transactions table tr td { font-size:12px; }
+
+.applicable-incentive {
+  
+  background:white;  
+  border:2px ridge gray;
+  color:#EC008C; 
+  cursor:pointer;
+  font-size:12px;
+  text-align:center; 
+}
+
+.applicable-incentive-entitlement-details { display:none; } 
