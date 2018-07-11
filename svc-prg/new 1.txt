@@ -1,0 +1,180 @@
+ALTER TABLE `settings` 
+   CHANGE `SettingCode` `SettingCode` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL, 
+   CHANGE `SettingName` `SettingName` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+  
+ 
+CREATE TABLE `userpasswordhistory`( 
+   `ID` INT(25) NOT NULL AUTO_INCREMENT , 
+   `UserID` INT(25) NOT NULL , 
+   `Password` VARCHAR(225) , 
+   `CreateBy` VARCHAR(225) , 
+   `CreatedByID` INT(25) , 
+   `HistoryDate` DATETIME , 
+   `Changed` TINYINT(1) DEFAULT '1' , 
+   PRIMARY KEY (`ID`)
+);
+
+
+INSERT INTO modulecontrol 
+(`code`,ModuleID,SubModuleid,`Name`,Description,EnrollmentDate,LastModifiedDate,`Status`,PageNum,`Changed`) 
+SELECT 'CHNGPASSW',1,3,'Change Password','Change Password',NOW(),NOW(),1,412,1 
+FROM modulecontrol WHERE NOT EXISTS
+(SELECT * FROM modulecontrol WHERE `code`='CHNGPASSW')
+LIMIT 1;
+ 
+INSERT INTO rusertypemodulecontrol (usertypeid,modulecontrolid,`changed`)
+SELECT id, (SELECT ID FROM modulecontrol WHERE pagenum=412),1
+FROM usertype 
+LEFT JOIN rusertypemodulecontrol r ON r.usertypeid = usertype.ID AND modulecontrolid = (SELECT ID FROM modulecontrol WHERE pagenum=412)
+WHERE r.usertypeid IS NULL;
+ 
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'MINUSRPWDLEN','Minimum Password Lengh',8 
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='MINUSRPWDLEN')
+LIMIT 1;
+
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'PASWRDRECUR','Max Password Recurrence',25 
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='PASWRDRECUR')
+LIMIT 1;
+
+INSERT INTO `userpasswordhistory`(`userid`,`password`,`createby`,`historydate`)
+ 
+SELECT id,upass,uname,NOW()
+ 
+FROM
+ 
+(SELECT 
+ 
+                u.ID id,
+                TRIM(u.UserName) uname,
+                u.Password upass,
+                ul.LoginTime lastlogintime,
+                DATEDIFF(NOW(),ul.LoginTime) lastlogindays
+                
+                FROM `user` u
+                INNER JOIN `loginhistory` lh ON lh.userid=u.id AND lh.id=(SELECT lhh.id FROM `loginhistory` lhh WHERE lhh.userid=u.id AND lhh.status='Active' ORDER BY lhh.id DESC LIMIT 1)
+                INNER JOIN `userloginhistory` ul ON u.ID=ul.UserID AND ul.ID=(SELECT ull.id FROM userloginhistory ull WHERE ull.userid=u.id ORDER BY ull.ID DESC LIMIT 1) )atbl
+ 
+WHERE atbl.lastlogindays<30 
+AND uname !='ITAdministrator';
+ 
+ 
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'PWREUSEINT','Interal for password reuse',180 
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='PWREUSEINT')
+LIMIT 1;
+
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'PWDNOTEXEMPT','Password notification exemption',"('Administrator','SVRUSER')"
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='PWDNOTEXEMPT')
+LIMIT 1;
+ 
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'PWDEXPEXEMPT','Password Expiration Exemption',"('SVRUSER')"
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='PWDEXPEXEMPT')
+LIMIT 1;
+
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'DAYSBEFPWDEXPNOT','Days before expiration for system to trigger notification',20
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='DAYSBEFPWDEXPNOT')
+LIMIT 1;
+ 
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'MAXPWDVAL','Max No of Days of Password Validity',60
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='MAXPWDVAL')
+LIMIT 1;
+ 
+ALTER TABLE `userloginhistory` 
+ ADD COLUMN `ClientIPAddress` VARCHAR(50) NULL AFTER `PasswordChanged`;
+
+ALTER TABLE `loginhistory` 
+   ADD COLUMN `CreateBy` VARCHAR(255) NULL AFTER `HistoryDate`;
+ 
+INSERT INTO settings (settingcode,settingname,settingvalue)
+SELECT 'UNLOCKUSER','UNLOCKUSER','("Administrator","SVRUSER")'
+FROM settings
+WHERE NOT EXISTS
+(SELECT * FROM `settings` WHERE settings.settingcode = "UNLOCKUSER" )
+LIMIT 1;
+ 
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'MAXIDLETIME','Maximum idle time before the system auto logout',30 
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='MAXIDLETIME')
+LIMIT 1;
+
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'PGEXCINAUTOUT','Pages excluded in autologout','' 
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='PGEXCINAUTOUT')
+LIMIT 1;
+ 
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'ENAELEAGR','Enable Electronic Agreement','NO' 
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='ENAELEAGR')
+LIMIT 1;
+ 
+ALTER TABLE `settings` 
+CHANGE `SettingValue` `SettingValue` VARCHAR(32000) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+ 
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'ELECLICAGMTPAR1','First Paragraph for Electronic License Agreement','This is paragraph1' 
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='ELECLICAGMTPAR1')
+LIMIT 1;
+
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'ELECLICAGMTPAR2','Second Paragraph for Electronic License Agreement','This is paragraph2' 
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='ELECLICAGMTPAR2')
+LIMIT 1;
+ 
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'ELECLICAGMTPAR3','Third Paragraph for Electronic License Agreement','This is paragraph3' 
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='ELECLICAGMTPAR3')
+LIMIT 1;
+ 
+INSERT INTO settings (`SettingCode`,`SettingName`,`SettingValue`) 
+SELECT 'ELECLICAGMTFTR','Footer for Electronic License Agreement','Do You Agree?' 
+FROM settings WHERE NOT EXISTS
+(SELECT * FROM settings WHERE SettingCode='ELECLICAGMTFTR')
+LIMIT 1;
+
+INSERT INTO modulecontrol 
+(`code`,ModuleID,SubModuleid,`Name`,Description,EnrollmentDate,LastModifiedDate,`Status`,PageNum,`Changed`) 
+SELECT 'ULM',1,1,'USER Login Management','USER Login Management',NOW(),NOW(),1,365,1 
+FROM modulecontrol WHERE NOT EXISTS
+(SELECT * FROM modulecontrol WHERE `code`='ULM')
+LIMIT 1;
+ 
+INSERT INTO rusertypemodulecontrol (usertypeid,modulecontrolid,`changed`)
+SELECT id, (SELECT ID FROM modulecontrol WHERE pagenum=365),1
+FROM usertype 
+LEFT JOIN rusertypemodulecontrol r ON r.usertypeid = usertype.ID AND modulecontrolid = (SELECT ID FROM modulecontrol WHERE pagenum=365)
+WHERE r.usertypeid IS NULL
+AND usertype.id IN (28);
+
+INSERT INTO modulecontrol 
+(`code`,ModuleID,SubModuleid,`Name`,Description,EnrollmentDate,LastModifiedDate,`Status`,PageNum,`Changed`) 
+SELECT 'UNLOCK USER',1,1,'UNLOCK USER','UNLOCK USER',NOW(),NOW(),1,408,1 
+FROM modulecontrol WHERE NOT EXISTS
+(SELECT * FROM modulecontrol WHERE `code`='UNLOCK USER')
+LIMIT 1;
+ 
+INSERT INTO rusertypemodulecontrol (usertypeid,modulecontrolid,`changed`)
+SELECT id, (SELECT ID FROM modulecontrol WHERE pagenum=408),1
+FROM usertype 
+LEFT JOIN rusertypemodulecontrol r ON r.usertypeid = usertype.ID AND modulecontrolid = (SELECT ID FROM modulecontrol WHERE pagenum=408)
+WHERE r.usertypeid IS NULL
+AND usertype.id IN (28);
+

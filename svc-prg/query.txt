@@ -1,0 +1,30 @@
+INSERT INTO modulecontrol 
+(`code`,ModuleID,SubModuleid,`Name`,Description,EnrollmentDate,LastModifiedDate,`Status`,PageNum,`Changed`) 
+SELECT 'W2W',11,21, 'Wall to Wall File Loading','Wall to Wall File Loading',NOW(),NOW(),1, 740,1 
+FROM modulecontrol WHERE NOT EXISTS
+(SELECT * FROM modulecontrol WHERE pagenum= 740 )
+LIMIT 1;
+ 
+ 
+INSERT INTO modulecontrol 
+(`code`,ModuleID,SubModuleid,`Name`,Description,EnrollmentDate,LastModifiedDate,`Status`,PageNum,`Changed`) 
+SELECT 'W2WRPT',11,21, 'Wall to Wall Report','Wall to Wall Report',NOW(),NOW(),1, 750,1 
+FROM modulecontrol WHERE NOT EXISTS
+(SELECT * FROM modulecontrol WHERE pagenum= 750 )
+LIMIT 1;
+ 
+ 
+INSERT INTO modulecontrol 
+(`code`,ModuleID,SubModuleid,`Name`,Description,EnrollmentDate,LastModifiedDate,`Status`,PageNum,`Changed`) 
+SELECT 'W2WConfirm',11,21, 'Confirm Cycle Count','Confirm Cycle Count',NOW(),NOW(),1, 760,1 
+FROM modulecontrol WHERE NOT EXISTS
+(SELECT * FROM modulecontrol WHERE pagenum= 760 )
+LIMIT 1;
+ 
+ 
+INSERT INTO modulecontrol 
+(`code`,ModuleID,SubModuleid,`Name`,Description,EnrollmentDate,LastModifiedDate,`Status`,PageNum,`Changed`) 
+SELECT 'W2WConfirmDetails',0,0, 'Confirm Cycle Count Details','Confirm Cycle Count Details',NOW(),NOW(),1, 760.1,1 
+FROM modulecontrol WHERE NOT EXISTS
+(SELECT * FROM modulecontrol WHERE pagenum= 760.1 )
+LIMIT 1;

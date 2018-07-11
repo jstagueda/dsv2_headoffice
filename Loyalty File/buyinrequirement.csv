@@ -1,0 +1,5 @@
+start date,end date,promocode,PromoDescription,Purchase Requirement type,criteria,min value,points,Brand,form ,style,pmg,pline,sku
+1/1/2013,1/31/2013,LoyaltyJanuaryPromo,Collect 20 Points to get a free white result,Single,S-AMT,1000,10,,BABY,,,,
+2/1/2013,2/28/2013,LoyaltyFebruaryPromo,Collect 20 Points to get a free white result,Single,S-AMT,1000,10,,BABY,,,,
+3/1/2013,3/31/2013,LoyaltyMarchPromo,Collect 20 Points and additional 50,Single,S-AMT,1000,10,,BABY,,,,
+1/1/2013,3/31/2013,JantoMarch,collected 70 points per month from january to march,Single,S-AMT,1000,10,,BABY,,,,

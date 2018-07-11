@@ -1,0 +1,133 @@
+<?php    
+/* 
+ *  Modified by: marygrace cabardo 
+ *  10.08.2012
+ *  marygrace.cabardo@gmail.com
+ */
+	ini_set('display_errors', '1');
+        
+	header( "Expires: Mon, 20 Dec 1998 01:00:00 GMT" );
+	header( "Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT" );
+	header( "Cache-Control: no-cache, must-revalidate" );
+	header( "Pragma: no-cache" );
+	
+        require_once "initialize.php";
+        require_once(CS_PATH.DS.'pages.php');
+
+        global $database;
+        $cpage = new Pages();
+        
+        tpi_EODUnlinkReloader(); //delete file trigger for EOD...
+        //check explanation in functions.php for more info.
+        if($session->is_logged_in()) tpi_setGlobalBranchParams();
+        
+        if(!$session->is_logged_in()) {
+            $message="Please try to login first.";
+            redirect_to("login.php?msg=".$message);
+        }
+
+        define("DATETODAY", date("m/d/Y"));	
+        $page="index.php";
+
+        if(isset($_GET["pup"]))
+                $pup=$_GET["pup"];
+        else $pup=-1;  	
+
+        if(isset($_GET["pageid"])) 
+                $pid=$_GET["pageid"];  	
+        else {
+
+        $pid=-1;
+            /*unset($_SESSION["USERID"]);
+            unset($_SESSION["SESSION"]);*/
+            }
+
+            /* SESSION CHECKER */
+        if($pid!=-1) {
+                if (!$session->is_logged_in()) {
+                        $message="Please try to login first.";
+                        redirect_to("index.php?msg=".$message);
+                }
+                if(!$session->user_id){
+                        $message="Please try to login first.";
+                redirect_to("index.php?msg=".$message);
+                }
+                $userid = $session->user_id;
+                $rs_access = $sp->spSelectAccessPage($database, $userid, $pid);				  
+                if((!$rs_access->num_rows) && $pid!=0) $pid=0;
+                }
+
+        if(!isset($_SESSION["prod_add"])) {
+                    $_SESSION["prod_add"]      = array();
+                    $_SESSION["prod_add_list"] = array();
+        }
+
+            if($pid != 34) {   
+                    unset($_SESSION["prod_add"]);
+                    unset($_SESSION["prod_add_list"]);
+            }
+
+        if($pid!=97) unset($_SESSION["CustomerID"]);	 	 
+        if($pid!=67) unset($_SESSION["buyin"]);	 	 
+        if($pid!=58) {   
+                    unset($_SESSION["prodid2"]);
+                    unset($_SESSION["prodcode2"]);
+                    unset($_SESSION["prodname2"]);
+                    unset($_SESSION["soh2"]);
+                    unset($_SESSION["qty2"]);
+                    unset($_SESSION["resid2"]);
+                    unset($_SESSION["uom2"]);
+        }
+
+        if($pid != 2) {   
+                    unset($_SESSION["prodid"]);
+                    unset($_SESSION["prodcode"]);
+                    unset($_SESSION["prodname"]);
+                    unset($_SESSION["soh"]);
+                    unset($_SESSION["qty"]);
+                    unset($_SESSION["resid"]);
+                    unset($_SESSION["uom"]);
+        }
+
+        if($pid!=116.1) {     
+                    unset($_SESSION["callouts"]);
+                    unset($_SESSION["violators"]);
+                    unset($_SESSION["heroed"]);
+                    unset($_SESSION["itemworn"]);
+        }
+
+        if($pid != 135) {   
+                    unset($_SESSION["ll_message_log"]);
+                    unset($_SESSION["ll_uploader_error"]);
+        }
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Tupperware Brands - Head Office</title>
+    <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon" />
+		<link type="text/css" href="css/ems.css" rel="stylesheet" />
+    <link type="text/css" href="css/tpi-style.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/calpopup.css"/>
+		<script language="javascript" src="js/string_validation.js"></script>
+		<script type="text/javascript" src="js/calpopup.js"></script>
+		<script type="text/javascript" src="js/dateparse.js"></script>
+    <script type="text/javascript" src="js/initialization-and-common-functions.js"></script>
+    <?php require_once('includes/pages-javascript-inclusion.php'); ?>    				
+	</head>
+	<body>
+	<?php 		
+	if($pid!=-1) require_once('pages/header.php');	
+           
+  $page=$cpage->get_page($pid);
+  //echo $page;
+  require_once($page);
+           
+  if($pid!=-1) require_once('pages/footer.php');		
+	?>            
+	</body>
+    <script type="text/javascript">
+        WindowDotLoad();
+    </script>
+</html>
